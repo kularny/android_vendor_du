@@ -149,6 +149,12 @@ PRODUCT_COPY_FILES += \
     vendor/du/prebuilt/common/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
     vendor/du/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon
 
+# OTA Updater
+PRODUCT_COPY_FILES += \
+    vendor/du/prebuilt/common/OTA-Updater/OTA-Updater-2.0.5.apk:system/app/OTA-Updater-2.0.5.apk \
+    vendor/du/prebuilt/common/OTA-Updater/rom.ota.prop:system/rom.ota.prop \
+    vendor/du/prebuilt/common/OTA-Updater/com.otaudater.feature.xml:system/etc/permissions/com.otaudater.feature.xml
+
 # Versioning System
 ANDROID_VERSION = 5.1.1
 DU_VERSION = v9.6
