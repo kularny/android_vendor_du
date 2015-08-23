@@ -155,6 +155,9 @@ PRODUCT_COPY_FILES += \
     vendor/du/prebuilt/common/OTA-Updater/rom.ota.prop:system/rom.ota.prop \
     vendor/du/prebuilt/common/OTA-Updater/com.otaudater.feature.xml:system/etc/permissions/com.otaudater.feature.xml
 
+# Synapse
+-include vendor/du/config/common_synapse.mk
+
 # Versioning System
 ANDROID_VERSION = 5.1.1
 DU_VERSION = v9.6
