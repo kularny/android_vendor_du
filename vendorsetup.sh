@@ -1,3 +1,4 @@
+add_lunch_combo du_i9100-userdebug
 add_lunch_combo du_bacon-userdebug
 add_lunch_combo du_cancro-userdebug
 add_lunch_combo du_falcon-userdebug
