@@ -96,7 +96,7 @@ PRODUCT_COPY_FILES += \
 
 # Versioning System
 ANDROID_VERSION = 6.0.1
-DU_VERSION = v10.1
+DU_VERSION = v10.2
 ifndef DU_BUILD_TYPE
     DU_BUILD_TYPE := DIRTY-DEEDS
     PLATFORM_VERSION_CODENAME := DIRTY-DEEDS
@@ -108,6 +108,9 @@ PRODUCT_PACKAGES += \
     DU-Updater
 endif
 
+# easy way to extend to add more packages
+-include vendor/extra/product.mk
+
 # Set all versions
 DU_VERSION := DU_$(DU_BUILD)_$(ANDROID_VERSION)_$(shell date -u +%Y%m%d-%H%M).$(DU_VERSION)-$(DU_BUILD_TYPE)
 DU_MOD_VERSION := DU_$(DU_BUILD)_$(ANDROID_VERSION)_$(shell date -u +%Y%m%d-%H%M).$(DU_VERSION)-$(DU_BUILD_TYPE)
@@ -115,5 +118,5 @@ DU_MOD_VERSION := DU_$(DU_BUILD)_$(ANDROID_VERSION)_$(shell date -u +%Y%m%d-%H%M
 PRODUCT_PROPERTY_OVERRIDES += \
     BUILD_DISPLAY_ID=$(BUILD_ID) \
     ro.du.version=$(DU_VERSION) \
-    ro.mod.version=$(DU_BUILD_TYPE)-v10.1 \
+    ro.mod.version=$(DU_BUILD_TYPE)-v10.2 \
 
