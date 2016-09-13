@@ -28,6 +28,10 @@ PRODUCT_COPY_FILES += \
     vendor/du/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
     vendor/du/prebuilt/common/bin/50-base.sh:system/addon.d/50-base.sh \
 
+# Backup Services whitelist
+PRODUCT_COPY_FILES += \
+    vendor/du/config/permissions/backup.xml:system/etc/sysconfig/backup.xml
+
 # Init file
 PRODUCT_COPY_FILES += \
     vendor/du/prebuilt/common/etc/init.local.rc:root/init.du.rc
@@ -52,6 +56,18 @@ PRODUCT_COPY_FILES += \
     vendor/du/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
     vendor/du/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit \
     vendor/du/prebuilt/common/bin/sysinit:system/bin/sysinit
+
+# Stagefright FFMPEG plugin
+ifneq ($(BOARD_USES_QCOM_HARDWARE),true)
+PRODUCT_PACKAGES += \
+    libffmpeg_extractor \
+    libffmpeg_omx \
+    media_codecs_ffmpeg.xml
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.sf.omx-plugin=libffmpeg_omx.so \
+    media.sf.extractor-plugin=libffmpeg_extractor.so
+endif
 
 # DU Utils Library
 PRODUCT_BOOT_JARS += \
@@ -96,7 +112,7 @@ PRODUCT_COPY_FILES += \
 
 # Versioning System
 ANDROID_VERSION = 6.0.1
-DU_VERSION = v10.3
+DU_VERSION = v10.6
 ifndef DU_BUILD_TYPE
     DU_BUILD_TYPE := DIRTY-DEEDS
     PLATFORM_VERSION_CODENAME := DIRTY-DEEDS
@@ -118,5 +134,6 @@ DU_MOD_VERSION := DU_$(DU_BUILD)_$(ANDROID_VERSION)_$(shell date -u +%Y%m%d-%H%M
 PRODUCT_PROPERTY_OVERRIDES += \
     BUILD_DISPLAY_ID=$(BUILD_ID) \
     ro.du.version=$(DU_VERSION) \
-    ro.mod.version=$(DU_BUILD_TYPE)-v10.3 \
+    ro.mod.version=$(DU_BUILD_TYPE)-v10.6 \
+    ro.cmte.legacy.version=1
 
